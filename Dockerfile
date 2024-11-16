@@ -1,11 +1,9 @@
-FROM maven:3.8.7-openjdk-18-slim
+FROM openjdk:21-slim
 
 WORKDIR /app
 
-COPY . .
+COPY /target/helloworld-0.0.1-SNAPSHOT.jar .
 
-RUN mvn clean package
+EXPOSE 9000
 
-EXPOSE 8080
-
-ENTRYPOINT ["java", "-jar", "/target/helloworld-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "helloworld-0.0.1-SNAPSHOT.jar"]
